@@ -1,0 +1,33 @@
+buildscript {//프로젝트의 플러그인 의존성 관리
+    ext {//전역변수로 springBootVersion 쓰겠다
+        springBootVersion = '2.1.9.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+        jcenter()
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
+    }
+}
+
+//아래 플러그인들은 스프링부트에서 필수 => 항상 추가 필요!
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' //스프링부트 의존성 관리해주는 플러그인
+
+group 'com.dsheo.book'
+version '1.0-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+}
